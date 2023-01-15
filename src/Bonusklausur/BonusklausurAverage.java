@@ -1,4 +1,4 @@
-package Tutorium;
+package Bonusklausur;
 
 import java.util.Arrays;
 
