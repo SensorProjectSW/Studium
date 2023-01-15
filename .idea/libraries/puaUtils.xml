@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="puaUtils">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/puaUtils.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Downloads/puaUtils.jar!/" />
+    </SOURCES>
+  </library>
+</component>
