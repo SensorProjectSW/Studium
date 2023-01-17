@@ -19,4 +19,12 @@ public class Aufgabe1 {
         if (k%2 == 0) return pot*pot;
         else return a*pot*pot;
     }
+
+    public static double potuebung(double a, int k) {
+        if (k==0) return 1.0;
+        double tmp = potuebung(a, k/2);
+        double pow = tmp * tmp;
+        if (k%2 == 0) pow *= a;
+        return pow;
+    }
 }
