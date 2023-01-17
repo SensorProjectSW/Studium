@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class BonusklausurAverage {
     public static void main(String[] args) {
-        double[] array = {1, 4, 4, 7};
+        double[] array = {1, 4, 4, 7, 8};
         System.out.println(Arrays.toString(array));
         System.out.println(average(array));
     }
@@ -13,7 +13,7 @@ public class BonusklausurAverage {
         if (a.length==1) return a[0];
 
         double[] a1 = new double[a.length/2];
-        double[] a2 = new double[a.length/2];
+        double[] a2 = new double[a.length - a1.length];
 
         for (int i = 0; i < a1.length; i++) {
             a1[i] = a[i];
