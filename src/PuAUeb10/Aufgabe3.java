@@ -33,4 +33,31 @@ public class Aufgabe3 {
             return new int[] {min, max};
         }
     }
+
+
+    public static int[] uebung(int[] a) {
+        return uebung(a, 0, a.length-1);
+        //bei r kann das -1 auch weggelassen werden, wenn man es als exklusive Obergrenze definiert
+    }
+
+    public static int[] uebung(int[] a, int l, int r) {
+        if (l==r) {
+            return new int[] {a[l], a[r]};
+        } else if (l == r - 1) {
+            if (a[l] < a[r]) {
+                return new int[] {a[l], a[r]};
+            } else {
+                return new int[] {a[r], a[l]};
+            }
+        } else {
+            int m = (l+r)/2;
+            int[] lSol = uebung(a,l,m);
+            int[] rSol = uebung(a, m+1, r);
+
+            int min = lSol[0] < rSol[0] ? lSol[0] : rSol[0];
+            int max = lSol[1] > rSol[1] ? lSol[1] : rSol[1];
+
+            return new int[] {min, max};
+        }
+    }
 }
