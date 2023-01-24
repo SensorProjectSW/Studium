@@ -9,7 +9,7 @@ public class BonusklausurAverage {
         System.out.println(average(array));
     }
 
-    public static double average(double[] a) {
+    public static double ownaverage(double[] a) {
         if (a.length==1) return a[0];
 
         double[] a1 = new double[a.length/2];
@@ -23,6 +23,22 @@ public class BonusklausurAverage {
             a2[i-a2.length] = a[i];
         }
 
-        return (average(a1) + average(a2))/2;
+        return (ownaverage(a1) + ownaverage(a2))/2;
+    }
+
+
+    public static double average (double[] A) {
+        return average(A, 0, A.length-1);
+    }
+
+    public static double average (double[] A, int start, int end) {
+        if (start == end) {
+            return A[start];
+        } else {
+            int m = (start + end) / 2;
+            double a1 = average(A, start, m);
+            double a2 = average(A, m+1, end);
+            return (a1 + a2) / 2;
+        }
     }
 }
