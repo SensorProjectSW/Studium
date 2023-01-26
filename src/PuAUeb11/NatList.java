@@ -17,10 +17,11 @@ public class NatList {
     public static void ausgeben(NatList nat) {
         // TODO Check, if Ausgabe bei tail() korrekt
         System.out.println("[" + nat.head());
+        /*
         for (int i = 1; i < nat.length(); i++) {
             System.out.println(", " + );
         }
-        System.out.println("]");
+        System.out.println("]");*/
     }
 
     public void append (int x) {
