@@ -2,7 +2,7 @@ package PuAUeb11;
 
 public class NatList {
     private int[] list = new int[0];
-    public NatList() { int[] newList = new int[0]; }
+    public NatList() { int[] newList = list; }
 
     public int head() { return list[0]; }
 
