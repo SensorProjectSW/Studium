@@ -36,6 +36,9 @@ class RatNumber {
         if (num == 0 || denom == 0) {
             num = 0;
             denom = 0;
+        } else if (num == denom || -num == denom) {
+            num = 1;
+            denom = 1;
         } else {
             //Verwenden des Euklidischen Algorithmus, um den ggT zu finden:
             long ggT = euklid(num, denom);
@@ -46,8 +49,7 @@ class RatNumber {
     }
 
     private long euklid(long n, long d) {
-        if (n==0) return d;
-        else return euklid(d % n, n);
+        return n == 0 ? d : euklid(d % n, n);
     }
 
     //Aufgabe 2c): Ausgabe als String
@@ -57,51 +59,40 @@ class RatNumber {
 
     //Aufgabe 2d): Test auf Gleichheit zum Wert Null
     public boolean isZero() {
-        if (num == 0 || denom == 0) return false;
-        else return true;
+        return !(num != 0 && denom != 0);
     }
 
     //Aufgabe 2e): Test auf Gleichheit mit zweiter rationaler Zahl
     public boolean equals(RatNumber other) {
         other.normalize();
-        if (num == other.num && denom == other.denom) return true;
-        else return false;
+        return num == other.num && denom == other.denom;
     }
 
     //Aufgabe 2f) (1): Multiplikation
     public RatNumber mult (RatNumber other) {
-        RatNumber ergebnis = new RatNumber();
-        ergebnis.num = num * other.num;
-        ergebnis.denom = denom * other.denom;
-        ergebnis.normalize();
-        return ergebnis;
+        long n = num * other.num;
+        long d = denom * other.denom;
+        return new RatNumber(n,d);
     }
 
     //Aufgabe 2f) (2): Division
     public RatNumber div (RatNumber other) {
-        RatNumber ergebnis = new RatNumber();
-        ergebnis.num = num * other.denom;
-        ergebnis.denom = denom * other.num;
-        ergebnis.normalize();
-        return ergebnis;
+        long n = num * other.denom;
+        long d = denom * other.num;
+        return new RatNumber(n,d);
     }
 
     //Aufgabe 2f) (3): Minus
     public RatNumber minus (RatNumber other) {
-        RatNumber ergebnis = new RatNumber();
         //Bringen der beiden Brüche auf den gleichen Nenner:
-        num *= other.denom;
-        other.num *= denom;
-        ergebnis.num = num - other.num;
-        ergebnis.denom = denom * other.denom;
-        ergebnis.normalize();
-        return ergebnis;
+        long d = denom * other.denom;
+        long n = (num * other.denom) - (other.num * denom);
+        return new RatNumber(n,d);
     }
 }
 
 public class RatNumberProg {
     public static void main(String[] args) {
-
         RatNumber a = new RatNumber(1,2);
         RatNumber b = new RatNumber(3,2);
 
