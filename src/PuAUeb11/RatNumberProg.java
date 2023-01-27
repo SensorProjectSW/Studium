@@ -37,7 +37,7 @@ class RatNumber {
             num = 0;
             denom = 0;
         } else if (num == denom || -num == denom) {
-            num = 1;
+            if (num > 0) num = 1; else num = -1;
             denom = 1;
         } else {
             //Verwenden des Euklidischen Algorithmus, um den ggT zu finden:
