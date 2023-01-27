@@ -1,27 +1,22 @@
 package PuAUeb11;
+import java.util.Arrays;
 
 public class NatList {
     private int[] list = new int[0];
-    public NatList() { int[] newList = list; }
+    public NatList() {}
 
     public int head() { return list[0]; }
 
     public NatList tail() {
         NatList temporary = new NatList();
-        for (int i = 0; i < temporary.length(); i++) {
+        for (int i = 1; i < this.length(); i++) {
             temporary.append(list[i]);
         }
         return temporary;
     }
 
-    public static void ausgeben(NatList nat) {
-        // TODO Check, if Ausgabe bei tail() korrekt
-        System.out.println("[" + nat.head());
-        /*
-        for (int i = 1; i < nat.length(); i++) {
-            System.out.println(", " + );
-        }
-        System.out.println("]");*/
+    public String toString() {
+        return Arrays.toString(list);
     }
 
     public void append (int x) {
@@ -54,7 +49,8 @@ public class NatList {
         list.append(3);
         System.out.println(list.isSorted());
         System.out.println(list.length());
-        System.out.println(list.tail());
-        ausgeben(list.tail());
+        System.out.println(list.toString());
+        list = list.tail();
+        System.out.println(list.toString());
     }
 }
