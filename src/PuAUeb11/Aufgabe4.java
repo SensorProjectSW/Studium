@@ -12,11 +12,10 @@ class BigNum {
     }
 
     public String toString() {
-        String s = "[" + list[0];
+        String s = "" + list[0];
         for (int i = 1; i < list.length; i++) {
-            s = s + ", " + list[i];
+            s = s + list[i];
         }
-        s = s + "]";
         return s;
     }
 
@@ -28,14 +27,36 @@ class BigNum {
         return s;
     }
 
-    /*
-    public BigNum mult (BigNum x) {
+    private int[] frontappend(int[] l) {
+        int[] neu = new int[l.length+1];
+        neu[0] = 0;
+        for (int i = 1; i < neu.length; i++) {
+            neu[i] = l[i-1];
+        }
+        return neu;
+    }
 
-    }*/
+    public BigNum mult (BigNum x) {
+        if (Integer.parseInt(this.toString()) >= Integer.parseInt(x.toString())) return mult(this, x);
+        else return mult(x, this);
+    }
+
+    private BigNum mult (BigNum g, BigNum k) {
+        BigNum sum = new BigNum("0");
+        for (int i = 0; i < Integer.parseInt(k.toString()); i++) {
+            sum = sum.add(g);
+        }
+        return sum;
+    }
 
     public BigNum add (BigNum x) {
         boolean carry = false;
         int[] ergebnis = (this.list.length >= x.list.length) ? new int[this.list.length] : new int[x.list.length];
+        if (this.list.length > x.list.length) {
+            while (this.list.length > x.list.length) x.list = frontappend(x.list);
+        } else if (this.list.length < x.list.length) {
+            while (this.list.length < x.list.length) list = frontappend(list);
+        }
         for (int i = ergebnis.length-1; i >= 0; --i) {
             if (!carry) {
                 if (x.list[i]+this.list[i] <= 9) {
@@ -60,19 +81,16 @@ class BigNum {
         } else {
             return new BigNum(IntArrToString(ergebnis));
         }
-
     }
-
-
 }
-
 
 public class Aufgabe4 {
     public static void main(String[] args) {
-        BigNum test1 = new BigNum("314");
-        BigNum test2 = new BigNum("848");
+        BigNum test1 = new BigNum("36");
+        BigNum test2 = new BigNum("2");
         System.out.println(test1.toString());
         System.out.println(test2.toString());
         System.out.println("Add: " + test1.add(test2));
+        System.out.println("Mult: " + test1.mult(test2));
     }
 }
