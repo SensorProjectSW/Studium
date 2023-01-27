@@ -27,9 +27,9 @@ class BigNum {
         return s;
     }
 
-    private int[] frontappend(int[] l) {
+    private int[] frontappend(int[] l, int n) {
         int[] neu = new int[l.length+1];
-        neu[0] = 0;
+        neu[0] = n;
         for (int i = 1; i < neu.length; i++) {
             neu[i] = l[i-1];
         }
@@ -53,9 +53,9 @@ class BigNum {
         boolean carry = false;
         int[] ergebnis = (this.list.length >= x.list.length) ? new int[this.list.length] : new int[x.list.length];
         if (this.list.length > x.list.length) {
-            while (this.list.length > x.list.length) x.list = frontappend(x.list);
+            while (this.list.length > x.list.length) x.list = frontappend(x.list,0);
         } else if (this.list.length < x.list.length) {
-            while (this.list.length < x.list.length) list = frontappend(list);
+            while (this.list.length < x.list.length) list = frontappend(list,0);
         }
         for (int i = ergebnis.length-1; i >= 0; --i) {
             if (!carry) {
