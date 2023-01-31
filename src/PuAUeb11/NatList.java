@@ -11,6 +11,10 @@ public class NatList {
         this.list = new int[0];
     }
 
+    private NatList(int[] l) {
+        this.list = l;
+    }
+
     public int head() { return list[0]; }
 
     public NatList tail() {
@@ -19,6 +23,14 @@ public class NatList {
             temporary.append(list[i]);
         }
         return temporary;
+    }
+
+    public NatList tailueb() {
+        int[] taillist = new int[this.list.length-1];
+        for (int i = 0; i < taillist.length; i++) {
+            taillist[i] = list[i+1];
+        }
+        return new NatList(taillist);
     }
 
     public String toString() {
