@@ -83,11 +83,17 @@ class RatNumber {
     }
 
     //Aufgabe 2f) (3): Minus
-    public RatNumber minus (RatNumber other) {
+    /*public RatNumber minus (RatNumber other) {
         //Bringen der beiden Brüche auf den gleichen Nenner:
         long d = denom * other.denom;
         long n = (num * other.denom) - (other.num * denom);
         return new RatNumber(n,d);
+    }*/
+
+    //besser aus der Übung:
+    public RatNumber minus (RatNumber other) {
+        RatNumber inverse = new RatNumber(-other.num,other.denom);
+        return this.add(inverse);
     }
 }
 
