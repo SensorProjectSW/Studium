@@ -54,7 +54,10 @@ class RatNumber {
 
     //Aufgabe 2c): Ausgabe als String
     public String toString() {
-        return num + "/" + denom;
+        if (this.denom == 1)
+            return Long.toString(this.num);
+            else if (isZero()) return "0";
+            else return num + "/" + denom;
     }
 
     //Aufgabe 2d): Test auf Gleichheit zum Wert Null
@@ -64,7 +67,6 @@ class RatNumber {
 
     //Aufgabe 2e): Test auf Gleichheit mit zweiter rationaler Zahl
     public boolean equals(RatNumber other) {
-        other.normalize();
         return num == other.num && denom == other.denom;
     }
 
