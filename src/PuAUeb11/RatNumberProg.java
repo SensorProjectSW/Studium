@@ -76,10 +76,16 @@ class RatNumber {
     }
 
     //Aufgabe 2f) (2): Division
-    public RatNumber div (RatNumber other) {
+    /*public RatNumber div (RatNumber other) {
         long n = num * other.denom;
         long d = denom * other.num;
         return new RatNumber(n,d);
+    }*/
+
+    //besser aus der Übung:
+    public RatNumber div (RatNumber other) {
+        RatNumber inverse = new RatNumber(other.denominator(), other.numerator());
+        return this.mult(inverse);
     }
 
     //Aufgabe 2f) (3): Minus
