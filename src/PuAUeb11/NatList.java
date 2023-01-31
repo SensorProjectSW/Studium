@@ -2,8 +2,14 @@ package PuAUeb11;
 import java.util.Arrays;
 
 public class NatList {
-    private int[] list = new int[0];
-    public NatList() {}
+    /*private int[] list = new int[0];
+    public NatList() {}*/
+
+    private int[] list;
+
+    public NatList() {
+        this.list = new int[0];
+    }
 
     public int head() { return list[0]; }
 
