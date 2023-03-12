@@ -1,3 +1,5 @@
+package Klausurvorbereitung;
+
 public class Aufgabe6WS0708 {
     public static void main(String[] args) {
         List list = new List();
